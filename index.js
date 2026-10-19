@@ -330,7 +330,7 @@ function cleanupMenuEntry() {
 
 // 注入到拓展设置面板（Extensions Settings Panel）
 function injectSettingsDrawer() {
-    if ($('#til-extension-settings').length > 0) return;
+    const $existing = $('#til-extension-settings');
 
     const drawerHtml = `
     <div id="til-extension-settings" class="inline-drawer extension_container til-root">
@@ -362,8 +362,13 @@ function injectSettingsDrawer() {
 
     for (const target of targets) {
         if (target.length > 0) {
-            target.prepend(drawerHtml);
-            $('#til-drawer-open-btn').off('click').on('click', () => openModal());
+            if ($existing.length > 0) {
+                // 如果已存在，移动到底部
+                target.append($existing);
+            } else {
+                target.append(drawerHtml);
+                $('#til-drawer-open-btn').off('click').on('click', () => openModal());
+            }
             break;
         }
     }
