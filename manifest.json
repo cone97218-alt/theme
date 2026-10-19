@@ -1,0 +1,16 @@
+{
+    "name": "theme-image-localizer",
+    "display_name": "美化图床本地化",
+    "loading_order": 9999,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "Antigravity",
+    "version": "1.0.0",
+    "description": "一键扫描酒馆美化主题中的网络图床/外链资源，自动下载转存至本地并智能替换路径。",
+    "homePage": "https://github.com/cone97218-alt/theme",
+    "hooks": {
+        "activate": "init"
+    }
+}

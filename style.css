@@ -1,0 +1,220 @@
+/* 美化图床本地化插件样式表 - 适配日夜切换与强制文字横向 */
+
+/* 强制所有文字横向排列，抵御外部美化主题的非标准排版 */
+.til-root,
+.til-root *,
+#til-extension-settings,
+#til-extension-settings * {
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+    word-break: normal !important;
+    letter-spacing: normal !important;
+    box-sizing: border-box !important;
+}
+
+/* 弹窗内容容器：适配酒馆原生 dialog 与日夜模式 */
+.til-modal-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    padding: 6px 4px !important;
+    color: var(--SmartThemeBodyColor, inherit) !important;
+    font-family: inherit !important;
+    width: 100% !important;
+    max-width: 650px !important;
+}
+
+/* 标题栏 */
+.til-modal-title-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding-bottom: 8px !important;
+    border-bottom: 1px solid var(--SmartThemeBorderColor, rgba(128, 128, 128, 0.2)) !important;
+}
+
+.til-modal-title-row h3 {
+    margin: 0 !important;
+    font-size: 1.15em !important;
+    font-weight: bold !important;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px !important;
+    color: var(--SmartThemeBodyColor, inherit) !important;
+}
+
+/* 彻底禁止主题在标题前注入伪元素符号（如 ✧₊⁺、♡ 等） */
+#til-extension-settings .inline-drawer-header b::before,
+#til-extension-settings .inline-drawer-header b::after,
+.til-modal-title-row h3::before,
+.til-modal-title-row h3::after,
+.til-modal-title-row h3 *::before,
+.til-modal-title-row h3 *::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* 描述文本 */
+.til-desc {
+    font-size: 0.9em !important;
+    color: var(--SmartThemeEmColor, var(--grey70, #888)) !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    text-align: left !important;
+}
+
+.til-desc code {
+    padding: 2px 5px !important;
+    border-radius: 4px !important;
+    background: rgba(128, 128, 128, 0.15) !important;
+    color: var(--SmartThemeBodyColor, inherit) !important;
+    font-size: 0.9em !important;
+}
+
+/* 数据统计栏 - 自适应亮暗背景 */
+.til-stat-box {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+    padding: 12px 16px !important;
+    background: var(--SmartThemeUserMesBlurTintColor, rgba(128, 128, 128, 0.1)) !important;
+    border: 1px solid var(--SmartThemeBorderColor, rgba(128, 128, 128, 0.2)) !important;
+    border-radius: 8px !important;
+}
+
+.til-stat-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    min-width: 110px !important;
+    flex: 1 !important;
+}
+
+.til-stat-label {
+    font-size: 0.8em !important;
+    color: var(--SmartThemeQuoteColor, var(--grey70, #888)) !important;
+    margin-bottom: 2px !important;
+}
+
+.til-stat-val {
+    font-size: 1.3em !important;
+    font-weight: bold !important;
+    color: var(--SmartThemeBodyColor, inherit) !important;
+}
+
+/* 操作按钮群 - 严禁纵向拆字 */
+.til-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    align-items: center !important;
+    margin-top: 4px !important;
+}
+
+.til-btn {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    writing-mode: horizontal-tb !important;
+    width: auto !important;
+    min-width: fit-content !important;
+    height: auto !important;
+    padding: 8px 14px !important;
+    gap: 6px !important;
+    font-size: 0.9em !important;
+    cursor: pointer !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+}
+
+.til-btn i {
+    display: inline-block !important;
+    margin-right: 6px !important;
+}
+
+/* 主要操作按钮高亮 */
+.til-btn-primary {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border: 1px solid #3b82f6 !important;
+}
+
+.til-btn-primary:hover {
+    background: #1d4ed8 !important;
+    filter: brightness(1.1) !important;
+}
+
+/* 次要操作按钮 */
+.til-btn-secondary {
+    background: rgba(128, 128, 128, 0.15) !important;
+    color: var(--SmartThemeBodyColor, inherit) !important;
+    border: 1px solid var(--SmartThemeBorderColor, rgba(128, 128, 128, 0.3)) !important;
+}
+
+.til-btn-secondary:hover {
+    background: rgba(128, 128, 128, 0.25) !important;
+}
+
+.til-btn:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
+/* 进度条 */
+.til-progress-bar-bg {
+    width: 100% !important;
+    height: 6px !important;
+    background: rgba(128, 128, 128, 0.2) !important;
+    border-radius: 3px !important;
+    overflow: hidden !important;
+    display: none;
+}
+
+.til-progress-bar-fill {
+    height: 100% !important;
+    width: 0% !important;
+    background: #3b82f6 !important;
+    transition: width 0.2s ease !important;
+}
+
+/* 日志框 */
+.til-log-box {
+    max-height: 180px !important;
+    overflow-y: auto !important;
+    background: var(--SmartThemeBotMesBlurTintColor, rgba(0, 0, 0, 0.25)) !important;
+    border: 1px solid var(--SmartThemeBorderColor, rgba(128, 128, 128, 0.2)) !important;
+    border-radius: 6px !important;
+    padding: 10px 12px !important;
+    font-family: Consolas, Monaco, "Courier New", monospace !important;
+    font-size: 0.82em !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    display: none;
+    color: var(--SmartThemeBodyColor, inherit) !important;
+    text-align: left !important;
+}
+
+.til-log-item {
+    margin-bottom: 4px !important;
+    line-height: 1.4 !important;
+}
+
+.til-log-success { color: #10b981 !important; }
+.til-log-error { color: #ef4444 !important; }
+.til-log-info { color: #3b82f6 !important; }
+.til-log-warn { color: #f59e0b !important; }
+
+/* 拓展设置面板中的 Drawer 样式 */
+#til-extension-settings .til-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 10px 4px !important;
+}
